@@ -22,3 +22,8 @@ ON c.id = m.country_id
 WHERE m.country_id IS NULL;
 
 -- 05. Countries
+SELECT * 
+FROM countries
+ORDER BY currency DESC, id;
+
+-- 06. Old movies
