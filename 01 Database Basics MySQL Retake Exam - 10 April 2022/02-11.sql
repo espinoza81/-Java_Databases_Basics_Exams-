@@ -27,3 +27,11 @@ FROM countries
 ORDER BY currency DESC, id;
 
 -- 06. Old movies
+SELECT m.id, m.title, i.runtime, i.budget, i.release_date
+FROM movies_additional_info AS i
+JOIN movies AS m USING (id)
+WHERE year(release_date) BETWEEN 1996 AND 1999
+ORDER BY runtime, id
+LIMIT 20;
+
+-- 07. Movie casting
