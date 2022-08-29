@@ -5,4 +5,4 @@ SET runtime =
     THEN  0 
     ELSE runtime - 10 
     END 
-WHERE id >= 15 AND id <= 25;
+WHERE id BETWEEN 15 AND 25;
