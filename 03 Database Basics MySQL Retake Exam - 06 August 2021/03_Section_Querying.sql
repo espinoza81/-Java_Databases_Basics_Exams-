@@ -16,8 +16,8 @@ ORDER BY t.`name`, a.`name`;
 -- 07. Categories Info
 SELECT c.`name`, 
 	count(gc.game_id) AS games_count,
-    round(avg(g.budget), 2) AS avg_budget,
-    max(g.rating) AS max_rating
+    	round(avg(g.budget), 2) AS avg_budget,
+    	max(g.rating) AS max_rating
 FROM games AS g
 JOIN games_categories AS gc
 ON gc.game_id = g.id
