@@ -24,3 +24,10 @@ WHERE year(o.order_datetime) <= 2018
 ORDER BY full_name DESC;
 
 -- 09. Best categories
+SELECT count(p.id) AS items_count, c.`name`, sum(p.quantity_in_stock) AS total_quantity 
+FROM products AS p
+RIGHT JOIN categories AS c
+ON p.category_id = c.id
+GROUP BY p.category_id
+ORDER BY items_count DESC, total_quantity
+LIMIT 5;
