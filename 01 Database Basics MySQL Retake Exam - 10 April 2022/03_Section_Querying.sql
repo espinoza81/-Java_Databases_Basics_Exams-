@@ -34,15 +34,12 @@ ORDER BY c.`name` DESC;
 
 -- 09. Rating system
 SELECT m.title,
-		CASE
-			WHEN i.rating <= 4 THEN 'poor'
-			WHEN i.rating <= 7 THEN 'good'
-            ELSE 'excellent'
-		END AS rating,
-		CASE
-			WHEN i.has_subtitles = 1 THEN 'english'
-            ELSE '-'
-		END AS subtitles,
+	CASE
+		WHEN i.rating <= 4 THEN 'poor'
+		WHEN i.rating <= 7 THEN 'good'
+        	ELSE 'excellent'
+	END AS rating,
+	IF(i.has_subtitles, 'english', '-') AS subtitles,
         i.budget
 FROM movies AS m
 JOIN movies_additional_info AS i USING (id) 
