@@ -14,3 +14,8 @@ WHERE t.leader_id IS NOT NULL
     	AND e.age <= 40;
     
 -- 04. Delete
+DELETE g
+FROM games AS g
+LEFT JOIN games_categories AS gc
+ON g.id = gc.game_id
+WHERE gc.game_id IS NULL AND g.release_date IS NULL;
