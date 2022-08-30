@@ -47,3 +47,12 @@ WHERE actor_id IS NULL
 ORDER BY height;
 
 -- 08. International festival
+SELECT c.`name`, count(m.id) AS movies_count
+FROM movies AS m
+LEFT JOIN countries AS c 
+ON m.country_id = c.id
+GROUP BY m.country_id
+HAVING movies_count >= 7
+ORDER BY c.`name` DESC;
+
+-- 09. Rating system
