@@ -28,3 +28,22 @@ HAVING max_rating >= 9.5
 ORDER BY games_count DESC, c.`name`;
 
 -- 08. Games of 2022
+SELECT g.`name`, 
+	g.release_date, 
+    concat(left(g.`description`, 10), '...') AS summary,
+    CASE
+		WHEN month(g.release_date) BETWEEN 1 AND 3 THEN 'Q1'
+		WHEN month(g.release_date) BETWEEN 4 AND 6 THEN 'Q2'
+		WHEN month(g.release_date) BETWEEN 7 AND 9 THEN 'Q3'
+        ELSE 'Q4'
+    END AS `quarter`,
+    t.`name`
+FROM games AS g
+JOIN teams AS t
+ON g.team_id = t.id
+WHERE right(g.`name`, 1) = '2'
+	AND year(g.release_date) = 2022
+    AND month(g.release_date) % 2 = 0
+ORDER BY `quarter`;
+
+-- 09. Full info for games
