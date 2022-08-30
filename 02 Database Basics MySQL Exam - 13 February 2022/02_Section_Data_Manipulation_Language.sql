@@ -10,3 +10,8 @@ SET quantity_in_stock = quantity_in_stock - 5
 WHERE quantity_in_stock BETWEEN 60 AND 70;
 
 -- 04. Delete
+DELETE c
+FROM customers AS c
+LEFT JOIN orders AS o
+ON c.id = o.customer_id
+WHERE o.customer_id IS NULL;
