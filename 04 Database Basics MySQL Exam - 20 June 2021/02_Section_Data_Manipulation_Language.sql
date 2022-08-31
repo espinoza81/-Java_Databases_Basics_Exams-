@@ -10,3 +10,8 @@ SET `condition` = 'C'
 WHERE (mileage >= 800000 OR mileage IS NULL) AND `year` <= 2010 AND make NOT LIKE 'Mercedes-Benz';
     
 -- 04. Delete
+DELETE c
+FROM clients AS c
+LEFT JOIN courses AS co
+ON c.id = co.client_id
+WHERE co.client_id IS NULL AND length(c.full_name) > 3;
