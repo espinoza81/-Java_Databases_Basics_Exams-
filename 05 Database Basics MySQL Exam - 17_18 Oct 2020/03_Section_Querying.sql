@@ -22,3 +22,12 @@ GROUP BY s.id
 ORDER BY product_count DESC, `avg` DESC, s.id;
 
 -- 08. Specific employee
+SELECT concat_ws(' ', e.first_name, e.last_name) AS Full_name, 	s.`name`, a.`name`,	e.salary
+FROM employees AS e
+JOIN stores AS s
+ON s.id = e.store_id
+JOIN addresses AS a
+ON s.address_id = a.id
+WHERE e.salary < 4000 AND locate(5, a.`name`) > 0 AND length(s.`name`) > 8 AND right(e.last_name, 1) = 'n';
+
+-- 09. Find all information of stores 
