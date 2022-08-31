@@ -32,3 +32,16 @@ HAVING count_of_cars > 1 AND SUBSTR(c.full_name, 2, 1) LIKE 'a'
 ORDER BY c.full_name;
 
 -- 09. Full info for courses
+SELECT a.`name`, 
+		IF(hour(co.`start`) BETWEEN 6 AND 20, 'Day', 'Night') AS day_time,
+        co.bill, c.full_name, ca.make, ca.model, cat.`name`
+FROM courses AS co
+JOIN addresses AS a
+ON a.id = co.from_address_id
+LEFT JOIN clients AS c
+ON co.client_id = c.id
+LEFT JOIN cars AS ca
+ON co.car_id = ca.id
+LEFT JOIN categories AS cat
+ON ca.category_id = cat.id
+ORDER BY co.id;
