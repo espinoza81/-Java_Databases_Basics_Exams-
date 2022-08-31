@@ -23,3 +23,12 @@ HAVING count_of_courses <> 2
 ORDER BY count_of_courses DESC, c.id;
 
 -- 08. Regular clients
+SELECT c.full_name, count(co.id) AS count_of_cars,	sum(co.bill) AS total_sum
+FROM clients AS c
+JOIN courses AS co
+ON c.id = co.client_id
+GROUP BY c.id
+HAVING count_of_cars > 1 AND SUBSTR(c.full_name, 2, 1) LIKE 'a'
+ORDER BY c.full_name;
+
+-- 09. Full info for courses
