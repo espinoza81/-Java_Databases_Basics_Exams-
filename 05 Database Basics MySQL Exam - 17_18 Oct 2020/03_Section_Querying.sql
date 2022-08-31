@@ -31,3 +31,13 @@ ON s.address_id = a.id
 WHERE e.salary < 4000 AND locate(5, a.`name`) > 0 AND length(s.`name`) > 8 AND right(e.last_name, 1) = 'n';
 
 -- 09. Find all information of stores 
+SELECT reverse(s.`name`) AS reversed_name, concat_ws('-', upper(t.`name`), a.`name`) AS full_address,	count(e.id) AS employees_count
+FROM stores AS s
+JOIN employees AS e
+ON s.id = e.store_id
+JOIN addresses AS a
+ON s.address_id = a.id
+JOIN towns AS t
+ON a.town_id = t.id
+GROUP BY s.id
+ORDER BY full_address;
