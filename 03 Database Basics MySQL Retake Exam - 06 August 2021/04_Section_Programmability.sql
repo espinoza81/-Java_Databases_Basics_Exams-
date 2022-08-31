@@ -26,3 +26,11 @@ BEGIN
 END
 
 -- 11. Update Budget of the Games
+CREATE PROCEDURE udp_update_budget (min_game_rating FLOAT)
+BEGIN
+	UPDATE games AS g
+	LEFT JOIN games_categories AS c
+    	ON g.id = c.game_id
+    	SET g.budget = g.budget + 100000, g.release_date = adddate(g.release_date, INTERVAL 1 YEAR)
+	WHERE c.category_id IS NULL AND g.release_date IS NOT NULL AND g.rating > min_game_rating;
+END
