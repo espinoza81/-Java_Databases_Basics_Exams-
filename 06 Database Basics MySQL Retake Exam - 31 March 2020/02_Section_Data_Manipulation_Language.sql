@@ -15,3 +15,6 @@ SET country =
 	END;
   
 -- 04. Delete
+DELETE 
+FROM addresses
+WHERE id % 3 = 0;
