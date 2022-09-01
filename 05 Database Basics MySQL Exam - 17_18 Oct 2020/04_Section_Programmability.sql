@@ -20,15 +20,15 @@ BEGIN
 	SET full_name := (
 		SELECT concat_ws(' ', first_name, concat(middle_name, '.'), last_name)
 		FROM employees AS e
-    WHERE e.id = employee_id);
+    		WHERE e.id = employee_id);
 	
-  SET years := (
+  	SET years := (
 		SELECT floor(DATEDIFF("2020-10-18", hire_date)/365)
 		FROM employees AS e
 		WHERE e.id = employee_id);
     
-  SET full_info := concat_ws(' ', full_name, 'works in store for', years, 'years');
-  RETURN full_info;
+  	SET full_info := concat_ws(' ', full_name, 'works in store for', years, 'years');
+  	RETURN full_info;
 END
 
 -- 11. Update product price by address
