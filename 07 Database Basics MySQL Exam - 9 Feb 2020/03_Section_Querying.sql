@@ -35,3 +35,17 @@ GROUP BY t.`name`
 ORDER BY max_speed DESC, t.`name`;
 
 -- 09. Total salaries and players by country
+SELECT c.`name`, count(p.id) AS total_count_of_players, sum(p.salary) AS total_sum_of_salaries
+FROM players AS p
+    RIGHT JOIN skills_data AS sd
+    ON p.skills_data_id = sd.id
+    RIGHT JOIN teams AS te
+    ON p.team_id = te.id
+    RIGHT JOIN stadiums AS s
+    ON te.stadium_id = s.id
+    RIGHT JOIN towns AS t
+    ON s.town_id = t.id
+    RIGHT JOIN countries AS c
+    ON t.country_id = c.id
+GROUP BY c.`name`
+ORDER BY total_count_of_players DESC, c.`name`;
