@@ -32,3 +32,7 @@ FROM photos AS p
 ORDER BY likes_count DESC, comments_count DESC, p.id;
 
 -- 09. The photo on the tenth day of the month
+SELECT concat(left(`description`, 30), '...') AS summary, `date`
+FROM photos
+WHERE day(`date`) = 10
+ORDER BY `date` DESC;
