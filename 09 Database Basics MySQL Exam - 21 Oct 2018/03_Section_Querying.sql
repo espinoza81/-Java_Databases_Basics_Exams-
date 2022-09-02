@@ -9,3 +9,9 @@ FROM colonists
 ORDER BY first_name, last_name, id;
 
 -- 06. Extract all military journeys
+SELECT id, journey_start, journey_end
+FROM journeys
+WHERE purpose = 'Military'
+ORDER BY journey_start;
+
+-- 07. Extract all pilots
