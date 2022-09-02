@@ -23,3 +23,8 @@ SET purpose =
 WHERE id % 2 = 0 OR id % 3 = 0 OR id % 5 = 0 OR id % 7 = 0;
 
 -- 03. Delete
+DELETE c
+FROM colonists AS c
+LEFT JOIN travel_cards AS tc
+ON tc.colonist_id = c.id
+WHERE tc.colonist_id IS NULL;
