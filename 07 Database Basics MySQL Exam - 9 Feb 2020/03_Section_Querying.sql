@@ -14,8 +14,8 @@ ORDER BY salary, age;
 -- 07. Detail info for all teams 
 SELECT `name`, established, fan_base, 
 	(SELECT count(id)
-    FROM players
-    WHERE team_id = t.id) AS players_count
+    	FROM players
+    	WHERE team_id = t.id) AS players_count
 FROM teams AS t
 ORDER BY players_count DESC, fan_base DESC;
 
