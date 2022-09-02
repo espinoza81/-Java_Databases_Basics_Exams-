@@ -12,3 +12,11 @@ WHERE age < 23 AND position = 'A' AND hire_date IS NULL AND s.strength > 50
 ORDER BY salary, age;
 
 -- 07. Detail info for all teams 
+SELECT `name`, established, fan_base, 
+	(SELECT count(id)
+    FROM players
+    WHERE team_id = t.id) AS players_count
+FROM teams AS t
+ORDER BY players_count DESC, fan_base DESC;
+
+-- 08. The fastest player by towns
