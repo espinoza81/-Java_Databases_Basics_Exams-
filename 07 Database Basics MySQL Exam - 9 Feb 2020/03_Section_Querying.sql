@@ -20,3 +20,18 @@ FROM teams AS t
 ORDER BY players_count DESC, fan_base DESC;
 
 -- 08. The fastest player by towns
+SELECT max(sd.speed) AS max_speed, t.`name`
+FROM players AS p
+	RIGHT JOIN skills_data AS sd
+    	ON p.skills_data_id = sd.id
+    	RIGHT JOIN teams AS te
+    	ON p.team_id = te.id
+    	RIGHT JOIN stadiums AS s
+    	ON te.stadium_id = s.id
+    	RIGHT JOIN towns AS t
+    	ON s.town_id = t.id
+WHERE te.`name` NOT LIKE 'Devify'
+GROUP BY t.`name`
+ORDER BY max_speed DESC, t.`name`;
+
+-- 09. Total salaries and players by country
