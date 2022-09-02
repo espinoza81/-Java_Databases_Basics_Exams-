@@ -4,3 +4,8 @@ FROM travel_cards
 ORDER BY card_number;
 
 -- 05. Extract all colonists
+SELECT id, concat_ws(' ', first_name, last_name) AS full_name, ucn
+FROM colonists
+ORDER BY first_name, last_name, id;
+
+-- 06. Extract all military journeys
