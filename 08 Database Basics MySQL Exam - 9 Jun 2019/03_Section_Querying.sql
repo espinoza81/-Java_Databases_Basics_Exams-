@@ -28,3 +28,17 @@ ORDER BY count_of_clients DESC, e.id
 LIMIT 5;
 
 -- 09. Branch cards
+SELECT b.`name`, count(ca.id) AS count_of_cards
+FROM branches AS b
+LEFT JOIN employees AS e
+ON e.branch_id = b.id
+LEFT JOIN employees_clients AS ec
+ON e.id = ec.employee_id
+LEFT JOIN clients AS c
+ON ec.client_id = c.id
+LEFT JOIN bank_accounts AS ba
+ON c.id = ba.client_id
+LEFT JOIN cards AS ca
+ON ba.id = ca.bank_account_id
+GROUP BY b.`name`
+ORDER BY count_of_cards DESC, b.`name`;
