@@ -12,3 +12,14 @@ FROM colonists
 WHERE id BETWEEN 96 AND 100;
 
 -- 02. Update
+UPDATE journeys
+SET purpose = 
+	CASE
+		WHEN id % 2 = 0 THEN 'Medical'
+		WHEN id % 3 = 0 THEN 'Technical'
+		WHEN id % 5 = 0 THEN 'Educational'
+		WHEN id % 7 = 0 THEN 'Military'
+    END
+WHERE id % 2 = 0 OR id % 3 = 0 OR id % 5 = 0 OR id % 7 = 0;
+
+-- 03. Delete
