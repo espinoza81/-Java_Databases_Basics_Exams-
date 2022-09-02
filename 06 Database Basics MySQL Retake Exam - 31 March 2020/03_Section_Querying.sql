@@ -21,3 +21,14 @@ WHERE up.user_id = up.photo_id
 ORDER BY u.id;
 
 -- 08. Count likes and comments 
+SELECT p.id, 
+	(SELECT count(id)
+    FROM likes
+    WHERE photo_id = p.id) AS likes_count, 
+    (SELECT count(id)
+    FROM comments
+    WHERE photo_id = p.id) AS comments_count
+FROM photos AS p
+ORDER BY likes_count DESC, comments_count DESC, p.id;
+
+-- 09. The photo on the tenth day of the month
