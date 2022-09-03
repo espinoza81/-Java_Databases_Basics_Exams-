@@ -75,3 +75,11 @@ GROUP BY p.`name`
 ORDER BY journeys_count DESC, p.`name`;
 
 -- 13. Extract the shortest journey
+SELECT j.id, p.`name`, s.`name`, j.purpose
+FROM planets AS p
+JOIN spaceports AS s
+ON p.id = s.planet_id
+JOIN journeys AS j
+ON s.id = j.destination_spaceport_id
+ORDER BY j.journey_end - j.journey_start
+LIMIT 1;
