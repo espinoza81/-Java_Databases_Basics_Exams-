@@ -32,3 +32,13 @@ ON tc.journey_id = j.id
 WHERE j.purpose = 'Technical';
 
 -- 09.Extract the fastest spaceship
+SELECT s.`name`, sp.`name`
+FROM spaceships AS s
+JOIN journeys AS j
+ON s.id = j.spaceship_id
+JOIN spaceports AS sp
+ON j.destination_spaceport_id = sp.id
+ORDER BY s.light_speed_rate DESC
+LIMIT 1;
+
+-- 10. Extract - pilots younger than 30 years
