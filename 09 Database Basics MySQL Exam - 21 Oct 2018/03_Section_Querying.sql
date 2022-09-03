@@ -23,3 +23,12 @@ WHERE tc.job_during_journey = 'Pilot'
 ORDER BY c.id;
 
 -- 08. Count all colonists
+SELECT count(c.id)
+FROM colonists AS c
+JOIN travel_cards AS tc
+ON c.id = tc.colonist_id
+JOIN journeys AS j
+ON tc.journey_id = j.id
+WHERE j.purpose = 'Technical';
+
+-- 09.Extract the fastest spaceship
