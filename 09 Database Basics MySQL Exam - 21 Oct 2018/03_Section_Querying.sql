@@ -55,3 +55,13 @@ GROUP BY s.id
 ORDER BY s.`name`;
 
 -- 11. Extract all educational mission
+SELECT p.`name`, s.`name`
+FROM spaceports AS s
+JOIN journeys AS j
+ON s.id = j.destination_spaceport_id
+JOIN planets AS p
+ON p.id = s.planet_id
+WHERE j.purpose = 'Educational'
+ORDER BY s.`name` DESC;
+
+-- 12. Extract all planets and their journey count
