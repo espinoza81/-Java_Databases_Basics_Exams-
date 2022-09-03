@@ -65,3 +65,13 @@ WHERE j.purpose = 'Educational'
 ORDER BY s.`name` DESC;
 
 -- 12. Extract all planets and their journey count
+SELECT p.`name`, count(j.id) AS journeys_count
+FROM planets AS p
+JOIN spaceports AS s
+ON p.id = s.planet_id
+JOIN journeys AS j
+ON s.id = j.destination_spaceport_id
+GROUP BY p.`name`
+ORDER BY journeys_count DESC, p.`name`;
+
+-- 13. Extract the shortest journey
