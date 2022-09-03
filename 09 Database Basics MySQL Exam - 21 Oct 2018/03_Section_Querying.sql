@@ -42,3 +42,16 @@ ORDER BY s.light_speed_rate DESC
 LIMIT 1;
 
 -- 10. Extract - pilots younger than 30 years
+SELECT s.`name`, s.manufacturer
+FROM spaceships AS s
+JOIN journeys AS j
+ON s.id = j.spaceship_id
+JOIN travel_cards AS tc
+ON j.id = tc.journey_id
+JOIN colonists AS c
+ON c.id = tc.colonist_id
+WHERE 2019 - year(c.birth_date) < 30 AND tc.job_during_journey = 'Pilot'
+GROUP BY s.id
+ORDER BY s.`name`;
+
+-- 11. Extract all educational mission
