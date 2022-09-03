@@ -42,3 +42,10 @@ ORDER BY j.journey_end - j.journey_start
 LIMIT 1;
 
 -- 14. Extract the less popular job
+SELECT tc.job_during_journey
+FROM travel_cards AS tc
+JOIN journeys AS j
+ON tc.journey_id = j.id
+GROUP BY j.id, tc.job_during_journey
+ORDER BY j.journey_end - j.journey_start DESC, count(tc.id)
+LIMIT 1;
